@@ -1,5 +1,5 @@
 import React,  { useState } from 'react';
-import { ScrollView,SafeAreaView, StyleSheet, Text, TextInput, Button, View } from 'react-native';
+import { ScrollView,SafeAreaView, StyleSheet, Text, TextInput, Button, View, TouchableOpacity, Image } from 'react-native';
 import { AppScreens, AuthStackParamList } from '../../../navigators/AuthFlowNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -16,7 +16,7 @@ interface SignupScreenProps {
 
 const styles = StyleSheet.create({
     btnLoginContainer: {
-      marginTop: 290 ,
+      marginTop: 200 ,
         alignSelf: 'center'
     },
     container: {
@@ -45,11 +45,23 @@ const styles = StyleSheet.create({
     textInput: {
         borderRadius: 10,
         borderWidth: 2,
-        borderColor: 'white',
+        borderColor: 'black',
         marginTop: 10,
         padding: 18,
         width: '100%'
     },
+    loginBtn: {
+        width: "60%",
+        borderRadius: 25,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 80,
+        backgroundColor: "#b60f00",
+      },
+      image: {
+        marginBottom: 40,
+      },
 });
 
 const SignupScreen: React.FunctionComponent<SignupScreenProps> = (props) => {
@@ -59,7 +71,7 @@ const SignupScreen: React.FunctionComponent<SignupScreenProps> = (props) => {
     const [pass, setpass] = useState<string>('');
     const [email, setemail] = useState<string>('');
 
-    logged = false;
+    let logged = false;
 
     return (
       <ScrollView>
@@ -77,21 +89,24 @@ const SignupScreen: React.FunctionComponent<SignupScreenProps> = (props) => {
             onChangeText={(word) => setpass(word)
             }
             />
-              <TextInput placeholder="comfirm password" secureTextEntry={true} style={styles.textInput}
+              <TextInput placeholder="confirm password" secureTextEntry={true} style={styles.textInput}
               value={email}
               onChangeText={(em) => setemail(em)}
               />
 
                 <TextInput placeholder="Email" style={styles.textInput} />
-            <Button
-            title='Signup'
-            onPress={() =>{
-              if(logged === false){alert("invalid log-in");}
-              else{alert("you good!");
-              navigation.navigate(AppScreens.Home)
-            }
-          }}
-            />
+           <TouchableOpacity
+           style = {styles.loginBtn}
+           onPress={() =>{
+            if(logged === false){alert("invalid log-in");}
+            else{alert("you good!");
+            navigation.navigate(AppScreens.Home)
+          }
+        }}
+           >
+               <Text> Signup</Text>
+            </TouchableOpacity>
+           
                 <Text style={styles.txtUsername}>{pass}</Text>
             </View>
             <View style={styles.btnLoginContainer}>
