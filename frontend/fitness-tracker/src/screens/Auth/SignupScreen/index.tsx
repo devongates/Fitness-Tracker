@@ -51,14 +51,15 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     loginBtn: {
-        width: "60%",
-        borderRadius: 25,
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 80,
-        backgroundColor: "#b60f00",
-      },
+            borderWidth: 2,
+            width: "60%",
+            alignItems: "center",
+            borderRadius: 10,
+            height: 50,
+            justifyContent: "center",
+            marginTop: 40,
+            backgroundColor: "#b60f00",
+          },
       image: {
         marginBottom: 40,
       },
@@ -66,17 +67,19 @@ const styles = StyleSheet.create({
 
 const SignupScreen: React.FunctionComponent<SignupScreenProps> = (props) => {
     const { navigation, route } = props;
-    const { params } = route;
+    
     const [username, setUsername] = useState<string>('');
     const [pass, setpass] = useState<string>('');
     const [email, setemail] = useState<string>('');
 
-    let logged = false;
+    let logged = true;
 
     return (
       <ScrollView>
         <SafeAreaView style={styles.container}>
+            <Text style={styles.txtUsername}>Create an Account</Text>
             <View style={styles.textInputContainer}>
+
             <TextInput
                 value={username}
                 placeholder="username"
@@ -98,16 +101,16 @@ const SignupScreen: React.FunctionComponent<SignupScreenProps> = (props) => {
            <TouchableOpacity
            style = {styles.loginBtn}
            onPress={() =>{
-            if(logged === false){alert("invalid log-in");}
-            else{alert("you good!");
-            navigation.navigate(AppScreens.Home)
+            if(username.length < 3){alert("username must be atleast 3 characters");}
+            else if(pass.length < 6){alert("password must be atleast 6 characters")}
+            else{alert("Welcome!");
+            navigation.navigate(AppScreens.home)
           }
         }}
            >
                <Text> Signup</Text>
             </TouchableOpacity>
-           
-                <Text style={styles.txtUsername}>{pass}</Text>
+        
             </View>
             <View style={styles.btnLoginContainer}>
                 <Text>have an account?</Text>

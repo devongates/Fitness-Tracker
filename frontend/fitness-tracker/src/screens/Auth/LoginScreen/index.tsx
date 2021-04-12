@@ -3,11 +3,17 @@ import { SafeAreaView, StyleSheet, Text, TextInput, Button, View, TouchableOpaci
 import { AppScreens, AuthStackParamList } from '../../../navigators/AuthFlowNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ScrollView } from 'react-native-gesture-handler';
+import { State } from 'react-native-gesture-handler';
 
 
 type LoginScreenNavigationProps = StackNavigationProp<AuthStackParamList, AppScreens.Login>;
 
+export type loginparams = {
+    username: string;
+};
+
 interface LoginScreenProps {
+    route: { params: loginparams };
     navigation: LoginScreenNavigationProps;
 }
 
@@ -47,12 +53,13 @@ const styles = StyleSheet.create({
       width: '105%'
     },
     button: {
+        borderWidth: 2,
         width: "60%",
         alignItems: "center",
-        borderRadius: 25,
+        borderRadius: 10,
         height: 50,
         justifyContent: "center",
-        marginTop: 70,
+        marginTop: 40,
         backgroundColor: "#b60f00",
       },
       image: {
@@ -68,11 +75,13 @@ const styles = StyleSheet.create({
 });
 
 const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
-    const { navigation } = props;
+    const { navigation, route } = props;
+    const { params } = route;
+    let auth = props.children
     const [username, setUsername] = useState<string>('');
     const [pass, setpass] = useState<string>('');
-    let logged = false;
-
+    
+    let logged = true;
     return (
         <ScrollView>
         <SafeAreaView style={styles.container}>
@@ -86,15 +95,19 @@ const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
                     style={styles.textInput}
                     onChangeText={(text) => setUsername(text)}
                 />
-                <TextInput placeholder="password" secureTextEntry={true} style={styles.textInput} />
+                <TextInput placeholder="password" secureTextEntry={true} style={styles.textInput} 
+                 value={pass}
+                 onChangeText ={(leter) => setpass(leter)}
+                />
             
             <View>
                 <View style={styles.textInputContainer}> 
             <TouchableOpacity style={styles.button}
             onPress={() =>{
-                if(logged === false){alert("invalid log-in");}
-                else{alert("you good!");
-                navigation.navigate(AppScreens.Home)
+                if(username.length < 3){alert("username must be atleast 3 characters");}
+                else if(pass.length < 6){alert("password must be atleast 6 characters");}
+                else{alert("welcome!");
+                navigation.navigate(AppScreens.home, {username})
               }
             }}
             >
