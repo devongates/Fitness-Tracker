@@ -7,10 +7,7 @@ import homescreen from '../../screens/homescreen';
 import settings from '../../screens/settings';
 import workout from '../../screens/workout';
 import progress from '../../screens/progress';
-import running from '../../screens/running';
-import benches from '../../screens/benches';
-import pushups from '../../screens/pushups';
-import squats from '../../screens/squats';
+import timer from '../../screens/timer';
 
 export enum AppScreens {
     Welcome = 'Welcome',
@@ -20,10 +17,7 @@ export enum AppScreens {
     progress = 'progress',
     workout = 'workout',
     settings = 'settings',
-    running = 'running',
-    benches = 'benches',
-    pushups = 'pushups',
-    squats = 'squats'
+    timer = 'timer'
 }
 
 export type AuthStackParamList = {
@@ -34,10 +28,7 @@ export type AuthStackParamList = {
     progress: undefined;
     workout: undefined;
     settings: undefined;
-    running: undefined;
-    benches: undefined;
-    pushups: undefined;
-    squats: undefined;
+    timer: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthStackParamList>();
@@ -52,10 +43,7 @@ const AuthFlowNavigator: React.FunctionComponent = () => {
             <AuthStack.Screen name={AppScreens.progress} component={progress} />
             <AuthStack.Screen name={AppScreens.workout} component={workout} />
             <AuthStack.Screen name={AppScreens.settings} component={settings} />
-            <AuthStack.Screen name={AppScreens.running} component={running} />
-            <AuthStack.Screen name={AppScreens.pushups} component={pushups} />
-            <AuthStack.Screen name={AppScreens.benches} component={benches} />
-            <AuthStack.Screen name={AppScreens.squats} component={squats} />
+            <AuthStack.Screen name={AppScreens.timer} component={timer} />
         </AuthStack.Navigator>
     );
 };
