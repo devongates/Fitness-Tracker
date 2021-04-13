@@ -27,14 +27,16 @@ const running = (props) => {
             <View style={styles.textInputContainer}>
                 <Text style={styles.txtHello}>{workout.toUpperCase()}</Text>
 
-                <View style={styles.sep}></View>
-
                 <View style={styles.container1}>
                     <Stopwatch laps msecs start={start} reset={false} />
                 </View>
 
                 <TouchableOpacity style={styles.button} onPress={handlePress}>
                     <Text>{start ? 'Stop' : 'Start'}</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button2} onPress={() => { navigation.navigate(AppScreens.workout) } } >
+                    <Text>Back</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -93,6 +95,15 @@ const styles = StyleSheet.create({
     },
     button: {
         width: '60%',
+        alignItems: 'center',
+        borderRadius: 25,
+        height: 50,
+        justifyContent: 'center',
+        marginTop: 200,
+        backgroundColor: '#b60f00'
+    },
+    button2: {
+        width: '40%',
         alignItems: 'center',
         borderRadius: 25,
         height: 50,

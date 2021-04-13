@@ -11,7 +11,6 @@ import {
     Dimensions
 } from 'react-native';
 import { AppScreens, AuthStackParamLists } from '../../navigators/AuthFlowNavigator';
-
 import { ScrollView } from 'react-native-gesture-handler';
 
 const workout = (props) => {
@@ -22,6 +21,7 @@ const workout = (props) => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.txtHello}>Workout List</Text>
+            
             {workouts.map((workout, index) => {
                 return (
                     <TouchableOpacity
@@ -31,10 +31,12 @@ const workout = (props) => {
                             navigation.navigate(AppScreens.timer, { workout });
                         }}
                     >
-                        <Button title={workout} />
+                        <Text>{workout}</Text>
+                
                     </TouchableOpacity>
                 );
             })}
+            
             <View style={styles.container1}>
                 <TextInput
                     placeholder="Other"
@@ -42,23 +44,36 @@ const workout = (props) => {
                     style={styles.textInput}
                     onChangeText={(text) => setOther(text)}
                 />
-                <View style={styles.btn}>
-                    <Button
-                        title="Go"
+                    <TouchableOpacity
+                        style={styles.button3}
                         onPress={() => {
-                            navigation.navigate(AppScreens.timer, { workout: other });
+                            navigation.navigate(AppScreens.timer, { workout: other }); 
                         }}
-                    />
+                    >
+                        <Text>Go</Text>
+                </TouchableOpacity>
                 </View>
-            </View>
+                
+                <TouchableOpacity
+                        style={styles.button3}
+                        onPress={() => {
+                            navigation.navigate(AppScreens.home);
+                        }}
+                >
+                    <Text>Back</Text>
+                </TouchableOpacity>
         </SafeAreaView>
-    );
-};
+    )};
 
 const styles = StyleSheet.create({
     btn: {
         position: 'absolute',
         left: 160,
+        top: 71
+    },
+    btnright: {
+        position: 'absolute',
+        right: 160,
         top: 71
     },
     container1: {
@@ -109,6 +124,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 25,
         height: 50,
+        left: 70,
         justifyContent: 'center',
         marginTop: 40,
         backgroundColor: '#b60f00'
@@ -121,6 +137,16 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         marginTop: 40,
+        backgroundColor: '#b60f00'
+    },
+    button3: {
+        borderWidth: 2,
+        width: '40%',
+        alignItems: 'center',
+        borderRadius: 20,
+        height: 45,
+        justifyContent: 'center',
+        marginTop: 90,
         backgroundColor: '#b60f00'
     },
     image: {

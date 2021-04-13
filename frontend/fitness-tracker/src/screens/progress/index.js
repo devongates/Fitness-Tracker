@@ -65,7 +65,17 @@ const styles = StyleSheet.create({
         borderBottomColor: 'black',
         borderBottomWidth: 1,
         width: "80%"
-      }
+      },
+      button3: {
+        borderWidth: 2,
+        width: '40%',
+        alignItems: 'center',
+        borderRadius: 20,
+        height: 45,
+        justifyContent: 'center',
+        marginTop: 600,
+        backgroundColor: '#b60f00'
+    }
 
 });
 
@@ -76,23 +86,18 @@ const progress = (props) => {
         <ScrollView>
         <SafeAreaView style={styles.container}>
             
-           
-            
-            
-                <View style={styles.textInputContainer}> 
+            <View style={styles.textInputContainer}> 
                 
                 <Text style={styles.txtHello}>start workout for progress</Text>
-               
-
-          <View style={styles.sep}> 
-                 </View>
-
-         
+                <TouchableOpacity
+                        style={styles.button3}
+                        onPress={() => {
+                            navigation.navigate(AppScreens.home);
+                        }}
+                >
+                    <Text>Back</Text>
+                </TouchableOpacity>
           </View>
-            
-            
-            
-            
         </SafeAreaView>
         </ScrollView>
     );

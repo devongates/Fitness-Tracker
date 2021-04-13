@@ -66,7 +66,17 @@ const styles = StyleSheet.create({
         borderBottomColor: 'black',
         borderBottomWidth: 1,
         width: "80%"
-      }
+      },
+      button3: {
+        borderWidth: 2,
+        width: '40%',
+        alignItems: 'center',
+        borderRadius: 20,
+        height: 45,
+        justifyContent: 'center',
+        marginTop: 100,
+        backgroundColor: '#b60f00'
+    }
 
 });
 
@@ -109,12 +119,17 @@ const settings = (props) => {
                  </View>
 
              </View>
-         
-            
-            
              <View style={styles.signup}>
                 <Button title="Sign out" onPress={() => navigation.navigate(AppScreens.Welcome)} />
              </View>
+             <TouchableOpacity
+                        style={styles.button3}
+                        onPress={() => {
+                            navigation.navigate(AppScreens.home);
+                        }}
+                >
+                    <Text>Back</Text>
+                </TouchableOpacity>
      </SafeAreaView>
     </ScrollView>
     );
