@@ -29,7 +29,9 @@ const running = (props) => {
 
                 <View style={styles.sep}></View>
 
-                <Stopwatch laps msecs start={start} reset={false} />
+                <View style={styles.container1}>
+                    <Stopwatch laps msecs start={start} reset={false} />
+                </View>
 
                 <TouchableOpacity style={styles.button} onPress={handlePress}>
                     <Text>{start ? 'Stop' : 'Start'}</Text>
@@ -42,6 +44,13 @@ const running = (props) => {
 const styles = StyleSheet.create({
     btnSignupContainer: {
         alignItems: 'center'
+    },
+    container1: {
+        // flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop: '50%'
+        // height: '30%'
     },
     container: {
         flex: 1,
@@ -88,7 +97,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         height: 50,
         justifyContent: 'center',
-        marginTop: 270,
+        marginTop: 200,
         backgroundColor: '#b60f00'
     },
     image: {
