@@ -1,10 +1,19 @@
-import React, { useState} from 'react';
-import { SafeAreaView, StyleSheet, Text, TextInput, Button, View, TouchableOpacity, Image, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import {
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TextInput,
+    Button,
+    View,
+    TouchableOpacity,
+    Image,
+    Dimensions
+} from 'react-native';
 import { AppScreens, AuthStackParamList } from '../../../navigators/AuthFlowNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ScrollView } from 'react-native-gesture-handler';
 import { State } from 'react-native-gesture-handler';
-
 
 type LoginScreenNavigationProps = StackNavigationProp<AuthStackParamList, AppScreens.Login>;
 
@@ -18,7 +27,6 @@ interface LoginScreenProps {
 }
 
 const styles = StyleSheet.create({
-
     btnSignupContainer: {
         alignItems: 'center'
     },
@@ -38,90 +46,93 @@ const styles = StyleSheet.create({
     },
     textInputContainer: {
         width: Dimensions.get('window').width,
-        alignItems: 'center',
+        alignItems: 'center'
     },
     txtHello: {
         fontSize: 15,
-        justifyContent: "center",
-        alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    box:{
-      width: 300,
-      height: 150,
-      marginTop:10 ,
-      backgroundColor: 'white',
-      width: '105%'
+    box: {
+        width: 300,
+        height: 150,
+        marginTop: 10,
+        backgroundColor: 'white',
+        width: '105%'
     },
     button: {
         borderWidth: 2,
-        width: "60%",
-        alignItems: "center",
+        width: '60%',
+        alignItems: 'center',
         borderRadius: 10,
         height: 50,
-        justifyContent: "center",
+        justifyContent: 'center',
         marginTop: 40,
-        backgroundColor: "#b60f00",
-      },
-      image: {
+        backgroundColor: '#b60f00'
+    },
+    image: {
         marginBottom: 0,
         width: Dimensions.get('window').width,
-        height: 300,
-
-      },
-      signup:{
-          marginTop: 200,
-      }
-
+        height: 300
+    },
+    signup: {
+        marginTop: 200
+    }
 });
 
 const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
     const { navigation, route } = props;
     const { params } = route;
-    let auth = props.children
+    let auth = props.children;
     const [username, setUsername] = useState<string>('');
     const [pass, setpass] = useState<string>('');
-    
+
     let logged = true;
     return (
         <ScrollView>
-        <SafeAreaView style={styles.container}>
-            
-            <Image style={styles.image} source={require("'../../../images/Raw_Fitness_Logo.jpg")}/>
-    
-            <View style={styles.textInputContainer}>
-                <TextInput
-                    value={username}
-                    placeholder="username"
-                    style={styles.textInput}
-                    onChangeText={(text) => setUsername(text)}
-                />
-                <TextInput placeholder="password" secureTextEntry={true} style={styles.textInput} 
-                 value={pass}
-                 onChangeText ={(leter) => setpass(leter)}
-                />
-            
-            <View>
-                <View style={styles.textInputContainer}> 
-            <TouchableOpacity style={styles.button}
-            onPress={() =>{
-                if(username.length < 3){alert("username must be atleast 3 characters");}
-                else if(pass.length < 6){alert("password must be atleast 6 characters");}
-                else{alert("welcome!");
-                navigation.navigate(AppScreens.home, {username})
-              }
-            }}
-            >
-              <Text>Login</Text>
-          </TouchableOpacity>
-          </View>
-            </View>
-            
-            </View>
-            <View style={styles.signup}>
-                <Text style={styles.txtHello} >        or</Text>
-                <Button title="Signup" onPress={() => navigation.navigate(AppScreens.Signup, { username })} />
-            </View>
-        </SafeAreaView>
+            <SafeAreaView style={styles.container}>
+                <Image style={styles.image} source={require("'../../../images/Raw_Fitness_Logo.jpg")} />
+
+                <View style={styles.textInputContainer}>
+                    <TextInput
+                        value={username}
+                        placeholder="username"
+                        style={styles.textInput}
+                        onChangeText={(text) => setUsername(text)}
+                    />
+                    <TextInput
+                        placeholder="password"
+                        secureTextEntry={true}
+                        style={styles.textInput}
+                        value={pass}
+                        onChangeText={(leter) => setpass(leter)}
+                    />
+
+                    <View>
+                        <View style={styles.textInputContainer}>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={() => {
+                                    if (username.length < 3) {
+                                        alert('username must be atleast 3 characters');
+                                    } else if (pass.length < 6) {
+                                        alert('password must be atleast 6 characters');
+                                    } else {
+                                        alert('welcome!');
+                                        navigation.navigate(AppScreens.home, { username });
+                                    }
+                                }}
+                            >
+                                <Text>Login</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.signup}>
+                    <Text style={styles.txtHello}> or</Text>
+                    <Button title="Signup" onPress={() => navigation.navigate(AppScreens.Signup, { username })} />
+                </View>
+            </SafeAreaView>
         </ScrollView>
     );
 };

@@ -16,48 +16,57 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const workout = (props) => {
     const { navigation } = props;
+    const workouts = ['Running', 'Benches', 'Squats', 'Push Ups'];
+    const [other, setOther] = useState('');
 
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.txtHello}>Workout List</Text>
-
-            <View style={styles.button}>
-                <Button
-                    title="Running"
-                    onPress={() => {
-                        navigation.navigate(AppScreens.running, { workout: 'running' });
-                    }}
+            {workouts.map((workout, index) => {
+                return (
+                    <View style={styles.button} key={index}>
+                        <Button
+                            title={workout}
+                            onPress={() => {
+                                navigation.navigate(AppScreens.running, { workout });
+                            }}
+                        />
+                    </View>
+                );
+            })}
+            <View style={styles.container1}>
+                <TextInput
+                    placeholder="Other"
+                    value={other}
+                    style={styles.textInput}
+                    onChangeText={(text) => setOther(text)}
                 />
-            </View>
-            <View style={styles.button}>
-                <Button
-                    title="Benches"
-                    onPress={() => {
-                        navigation.navigate(AppScreens.benches);
-                    }}
-                />
-            </View>
-            <View style={styles.button}>
-                <Button
-                    title="Squats"
-                    onPress={() => {
-                        navigation.navigate(AppScreens.squats);
-                    }}
-                />
-            </View>
-            <View style={styles.button}>
-                <Button
-                    title="Push ups"
-                    onPress={() => {
-                        navigation.navigate(AppScreens.pushups);
-                    }}
-                />
+                <View style={styles.btn}>
+                    <Button
+                        title="Go"
+                        onPress={() => {
+                            navigation.navigate(AppScreens.running, { workout: other });
+                        }}
+                    />
+                </View>
             </View>
         </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
+    btn: {
+        position: 'absolute',
+        left: 160,
+        top: 71
+    },
+    container1: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10,
+        width: '60%'
+    },
     btnSignupContainer: {
         alignItems: 'center'
     },
@@ -89,7 +98,7 @@ const styles = StyleSheet.create({
     },
     box: {
         width: Dimensions.get('window').width,
-        height: 550,
+        marginBottom: 10,
         marginTop: 10,
         backgroundColor: 'white',
         width: '105%'
