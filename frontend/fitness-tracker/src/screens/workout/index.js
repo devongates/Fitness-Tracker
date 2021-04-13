@@ -24,14 +24,15 @@ const workout = (props) => {
             <Text style={styles.txtHello}>Workout List</Text>
             {workouts.map((workout, index) => {
                 return (
-                    <View style={styles.button} key={index}>
-                        <Button
-                            title={workout}
-                            onPress={() => {
-                                navigation.navigate(AppScreens.running, { workout });
-                            }}
-                        />
-                    </View>
+                    <TouchableOpacity
+                        style={styles.button}
+                        key={index}
+                        onPress={() => {
+                            navigation.navigate(AppScreens.timer, { workout });
+                        }}
+                    >
+                        <Button title={workout} />
+                    </TouchableOpacity>
                 );
             })}
             <View style={styles.container1}>
@@ -45,7 +46,7 @@ const workout = (props) => {
                     <Button
                         title="Go"
                         onPress={() => {
-                            navigation.navigate(AppScreens.running, { workout: other });
+                            navigation.navigate(AppScreens.timer, { workout: other });
                         }}
                     />
                 </View>
