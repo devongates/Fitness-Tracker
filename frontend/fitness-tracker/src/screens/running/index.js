@@ -32,7 +32,7 @@ const running = (props) => {
                 <Stopwatch laps msecs start={start} reset={false} />
 
                 <TouchableOpacity style={styles.button} onPress={handlePress}>
-                    <Text>Start</Text>
+                    <Text>{start ? 'Stop' : 'Start'}</Text>
                 </TouchableOpacity>
             </View>
         </View>
