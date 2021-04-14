@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         justifyContent: "center",
         alignItems: 'center',
-        color: 'black',
+        color: 'grey',
     },
     box:{
       width: Dimensions.get('window').width,
@@ -59,10 +59,11 @@ const styles = StyleSheet.create({
       },
       signup:{
           marginTop: 100,
+          fontSize: 20
       },
       sep:{
         marginTop: 20,  
-        borderBottomColor: 'black',
+        borderBottomColor: 'grey',
         borderBottomWidth: 1,
         width: "80%"
       },
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
 
 const progress = (props) => {
     const { navigation } = props;
+    let now = new Date();
 
     return (
         <ScrollView>
@@ -89,14 +91,11 @@ const progress = (props) => {
             <View style={styles.textInputContainer}> 
                 
                 <Text style={styles.txtHello}>start workout for progress</Text>
-                <TouchableOpacity
-                        style={styles.button3}
-                        onPress={() => {
-                            navigation.navigate(AppScreens.home);
-                        }}
-                >
-                    <Text>Back</Text>
-                </TouchableOpacity>
+                <View style={styles.sep}></View>
+
+                <Text style={styles.signup}> </Text>
+
+
           </View>
         </SafeAreaView>
         </ScrollView>

@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        color: 'black'
+        color: 'grey'
     },
     timer: {
         marginTop: 70,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         marginTop: 200,
-        backgroundColor: '#b60f00'
+        backgroundColor: '#6B2426'
     },
     button2: {
         width: '40%',

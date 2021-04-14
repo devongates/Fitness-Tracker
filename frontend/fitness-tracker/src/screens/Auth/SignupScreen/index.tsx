@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     textInput: {
         borderRadius: 10,
         borderWidth: 2,
-        borderColor: 'black',
+        borderColor: 'grey',
         marginTop: 10,
         padding: 18,
         width: '100%'
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
             height: 50,
             justifyContent: "center",
             marginTop: 40,
-            backgroundColor: "#b60f00",
+            backgroundColor: "#6B2426",
           },
       image: {
         marginBottom: 40,
@@ -77,27 +77,29 @@ const SignupScreen: React.FunctionComponent<SignupScreenProps> = (props) => {
     return (
       <ScrollView>
         <SafeAreaView style={styles.container}>
-            <Text style={styles.txtUsername}>Create an Account</Text>
+            
             <View style={styles.textInputContainer}>
 
             <TextInput
+            color = 'grey'
                 value={username}
                 placeholder="username"
+                placeholderTextColor='grey'
                 style={styles.textInput}
                 onChangeText={(text) => setUsername(text)
                 }
             />
-            <TextInput placeholder="password" secureTextEntry={true} style={styles.textInput}
+            <TextInput color = 'grey' placeholderTextColor='grey' placeholder="password" secureTextEntry={true} style={styles.textInput}
             value={pass}
             onChangeText={(word) => setpass(word)
             }
             />
-              <TextInput placeholder="confirm password" secureTextEntry={true} style={styles.textInput}
+              <TextInput color = 'grey' placeholderTextColor='grey' placeholder="confirm password" secureTextEntry={true} style={styles.textInput}
               value={email}
               onChangeText={(em) => setemail(em)}
               />
 
-                <TextInput placeholder="Email" style={styles.textInput} />
+                <TextInput color = 'grey' placeholderTextColor='grey' placeholder="Email" style={styles.textInput} />
            <TouchableOpacity
            style = {styles.loginBtn}
            onPress={() =>{
@@ -113,7 +115,7 @@ const SignupScreen: React.FunctionComponent<SignupScreenProps> = (props) => {
         
             </View>
             <View style={styles.btnLoginContainer}>
-                <Text>have an account?</Text>
+                <Text style={{color: 'white'}}>have an account?</Text>
                 <Button title="Login" onPress={() => navigation.pop()} />
             </View>
         </SafeAreaView>

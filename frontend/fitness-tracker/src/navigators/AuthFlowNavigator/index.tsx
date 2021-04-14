@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import WelcomeScreen from '../../screens/WelcomeScreen';
 import LoginScreen, { loginparams } from '../../screens/Auth/LoginScreen';
 import SignupScreen, { SignupParams } from '../../screens/Auth/SignupScreen';
+
 import homescreen from '../../screens/homescreen';
 import settings from '../../screens/settings';
 import workout from '../../screens/workout';
@@ -35,15 +36,124 @@ const AuthStack = createStackNavigator<AuthStackParamList>();
 
 const AuthFlowNavigator: React.FunctionComponent = () => {
     return (
-        <AuthStack.Navigator headerMode="none">
-            <AuthStack.Screen name={AppScreens.Welcome} component={WelcomeScreen} />
-            <AuthStack.Screen name={AppScreens.Login} component={LoginScreen} />
-            <AuthStack.Screen name={AppScreens.Signup} component={SignupScreen} />
-            <AuthStack.Screen name={AppScreens.home} component={homescreen} />
-            <AuthStack.Screen name={AppScreens.progress} component={progress} />
-            <AuthStack.Screen name={AppScreens.workout} component={workout} />
-            <AuthStack.Screen name={AppScreens.settings} component={settings} />
-            <AuthStack.Screen name={AppScreens.timer} component={timer} />
+        <AuthStack.Navigator>
+            <AuthStack.Screen name={AppScreens.Welcome} component={WelcomeScreen} 
+             options={{
+                title: 'Raw Fitness',
+                headerStyle: {
+                  backgroundColor: '#6B2426',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    color: 'black'
+                }
+              }}
+            />
+            <AuthStack.Screen name={AppScreens.Login} component={LoginScreen}
+            options={{
+                title: 'Login',
+                headerStyle: {
+                  backgroundColor: '#6B2426',
+                },
+                headerTintColor: '#fff',
+                headerLeft: () => {
+                    return null;
+                  },
+                  headerTitleStyle: {
+                    color: 'black'
+                }
+              }}
+            />
+            <AuthStack.Screen name={AppScreens.Signup} component={SignupScreen}
+            options={{
+                title: 'Create an Account',
+                headerStyle: {
+                  backgroundColor: '#6B2426',
+                },
+                headerTintColor: '#fff',
+                headerLeft: () => {
+                    return null;
+                  },
+                  headerTitleStyle: {
+                    color: 'black'
+                }
+              }}
+            
+            />
+            <AuthStack.Screen name={AppScreens.home} component={homescreen} 
+            
+            options={{
+                title: 'Home',
+                headerStyle: {
+                  backgroundColor: '#6B2426',
+                },
+                headerTintColor: '#fff',
+                headerLeft: () => {
+                    return null;
+                  },
+                  headerTitleStyle: {
+                    color: 'black'
+                }
+              }}
+            
+            />
+            <AuthStack.Screen name={AppScreens.progress} component={progress} 
+            
+            options={{
+                title: 'Progress',
+                headerStyle: {
+                  backgroundColor: '#6B2426',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    color: 'black'
+                }
+               
+              }}
+            
+            />
+            <AuthStack.Screen name={AppScreens.workout} component={workout} 
+            
+            options={{
+                title: 'Workout List',
+                headerStyle: {
+                  backgroundColor: '#6B2426',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    color: 'black'
+                }
+               
+              }}
+            
+            
+            />
+            <AuthStack.Screen name={AppScreens.settings} component={settings} 
+            
+            options={{
+                title: 'Settings',
+                headerStyle: {
+                  backgroundColor: '#6B2426',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    color: 'black'
+                }
+               
+              }}
+            
+            />
+            <AuthStack.Screen name={AppScreens.timer} component={timer} 
+            
+            options={{
+                title: '',
+                headerStyle: {
+                  backgroundColor: '#6B2426',
+                },
+                headerTintColor: '#fff', 
+              }}
+            
+            />
         </AuthStack.Navigator>
     );
 };

@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: "center",
         marginTop: 40,
-        backgroundColor: "#b60f00",
+        backgroundColor: "#6B2426",
       },
       image: {
         marginBottom: 0,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
       },
       sep:{
         marginTop: 20,  
-        borderBottomColor: 'black',
+        borderBottomColor: 'white',
         borderBottomWidth: 1,
         width: "80%"
       },
@@ -91,10 +91,7 @@ const settings = (props) => {
             
              <View style={styles.textInputContainer}> 
                 
-                <Text style={styles.txtHello}>settings</Text>
-                
-             <View style={styles.sep}> 
-                 </View>
+                <Text style={styles.txtHello}></Text>
 
              <TouchableOpacity style={styles.button}
               onPress={() =>{
@@ -115,21 +112,12 @@ const settings = (props) => {
               <Text>edit workout</Text>
                </TouchableOpacity>
             
-               <View style={styles.sep}> 
-                 </View>
-
+               
              </View>
              <View style={styles.signup}>
                 <Button title="Sign out" onPress={() => navigation.navigate(AppScreens.Welcome)} />
              </View>
-             <TouchableOpacity
-                        style={styles.button3}
-                        onPress={() => {
-                            navigation.navigate(AppScreens.home);
-                        }}
-                >
-                    <Text>Back</Text>
-                </TouchableOpacity>
+             
      </SafeAreaView>
     </ScrollView>
     );

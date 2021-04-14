@@ -19,8 +19,9 @@ const workout = (props) => {
     const [other, setOther] = useState('');
 
     return (
+        <ScrollView>
         <SafeAreaView style={styles.container}>
-            <Text style={styles.txtHello}>Workout List</Text>
+            
             
             {workouts.map((workout, index) => {
                 return (
@@ -40,6 +41,8 @@ const workout = (props) => {
             <View style={styles.container1}>
                 <TextInput
                     placeholder="Other"
+                    placeholderTextColor='grey'
+                    
                     value={other}
                     style={styles.textInput}
                     onChangeText={(text) => setOther(text)}
@@ -53,17 +56,11 @@ const workout = (props) => {
                         <Text>Go</Text>
                 </TouchableOpacity>
                 </View>
-                
-                <TouchableOpacity
-                        style={styles.button3}
-                        onPress={() => {
-                            navigation.navigate(AppScreens.home);
-                        }}
-                >
-                    <Text>Back</Text>
-                </TouchableOpacity>
+            
         </SafeAreaView>
+    </ScrollView>
     )};
+
 
 const styles = StyleSheet.create({
     btn: {
@@ -81,7 +78,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         margin: 10,
-        width: '60%'
+        width: '60%',
+        color: 'white'
     },
     btnSignupContainer: {
         alignItems: 'center'
@@ -90,7 +88,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 10
+        margin: 10,
+        
     },
     textInput: {
         borderRadius: 10,
@@ -98,7 +97,9 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         marginTop: 10,
         padding: 18,
-        width: '100%'
+        width: '100%',
+        color: 'white',
+        borderColor: 'white'
     },
     textInputContainer: {
         width: Dimensions.get('window').width,
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         marginTop: 40,
-        backgroundColor: '#b60f00'
+        backgroundColor: '#6B2426'
     },
     button3: {
         borderWidth: 2,
@@ -146,8 +147,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         height: 45,
         justifyContent: 'center',
-        marginTop: 90,
-        backgroundColor: '#b60f00'
+        marginTop: 20,
+        backgroundColor: '#6B2426'
     },
     image: {
         marginBottom: 0,
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
     },
     sep: {
         marginTop: 20,
-        borderBottomColor: 'black',
+        borderBottomColor: 'white',
         borderBottomWidth: 1,
         width: '80%'
     }

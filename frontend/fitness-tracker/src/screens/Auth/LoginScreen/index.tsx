@@ -15,6 +15,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { ScrollView } from 'react-native-gesture-handler';
 import { State } from 'react-native-gesture-handler';
 
+
 type LoginScreenNavigationProps = StackNavigationProp<AuthStackParamList, AppScreens.Login>;
 
 export type loginparams = {
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     textInput: {
         borderRadius: 10,
         borderWidth: 2,
-        borderColor: 'black',
+        borderColor: 'grey',
         marginTop: 10,
         padding: 18,
         width: '100%'
@@ -49,9 +50,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     txtHello: {
+        marginTop: 30,
         fontSize: 15,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        color: 'white'
     },
     box: {
         width: 300,
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         marginTop: 40,
-        backgroundColor: '#b60f00'
+        backgroundColor: '#6B2426'
     },
     image: {
         marginBottom: 0,
@@ -77,7 +80,11 @@ const styles = StyleSheet.create({
     },
     signup: {
         marginTop: 200
-    }
+    },
+    open:{
+        marginTop: 200
+    },
+
 });
 
 const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
@@ -91,17 +98,20 @@ const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
-                <Image style={styles.image} source={require("'../../../images/Raw_Fitness_Logo.jpg")} />
-
+                <View style={styles.open}></View>
                 <View style={styles.textInputContainer}>
                     <TextInput
+                        color= 'grey'
                         value={username}
                         placeholder="username"
+                        placeholderTextColor = "grey"
                         style={styles.textInput}
                         onChangeText={(text) => setUsername(text)}
                     />
                     <TextInput
+                        color= 'grey'
                         placeholder="password"
+                        placeholderTextColor = 'grey'
                         secureTextEntry={true}
                         style={styles.textInput}
                         value={pass}
@@ -129,7 +139,7 @@ const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
                     </View>
                 </View>
                 <View style={styles.signup}>
-                    <Text style={styles.txtHello}> or</Text>
+                    <Text style={styles.txtHello}>don't have an account?</Text>
                     <Button title="Signup" onPress={() => navigation.navigate(AppScreens.Signup, { username })} />
                 </View>
             </SafeAreaView>

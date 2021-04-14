@@ -12,34 +12,29 @@ interface WelcomeScreenProps {
 const styles = StyleSheet.create({
     btnNextContainer: {
         alignSelf: 'flex-end',
-        color: "#b60f00"
+        color: "#6B2426"
     },
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-between',
-        margin: 10
+        margin: 0,
+        backgroundColor: 'black'
     },
     welcome: {
         fontSize: 40,
-        color: "#b60f00"
+        color: "#6B2426"
     },
     welcomeContainer: {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
-        width: '100%'
-    },
-    box:{
-      width: 300,
-      height: 200,
-      marginTop:100 ,
-      backgroundColor: 'purple',
+        width: '100%',
     },
     image: {
-        marginBottom: 0,
+        marginTop: -15,
         width: Dimensions.get('window').width,
-        height: 600,
+        height: 400,
 
       },
 
@@ -54,7 +49,7 @@ const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = (props) => {
 
             <View style={styles.welcomeContainer}>
                 <Text style={styles.welcome}>Welcome</Text>
-                <Text>start your legacy with us</Text>
+                <Text style={{color: 'white'}}>start your legacy with us</Text>
             </View>
             <View style={styles.btnNextContainer}>
                 <Button color= "#b60f00" title="NEXT" onPress={() => navigation.navigate(AppScreens.Login)} />
