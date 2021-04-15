@@ -34,10 +34,6 @@ const running = (props) => {
                 <TouchableOpacity style={styles.button} onPress={handlePress}>
                     <Text>{start ? 'Stop' : 'Start'}</Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button2} onPress={() => { navigation.navigate(AppScreens.workout) } } >
-                    <Text>Back</Text>
-                </TouchableOpacity>
             </View>
         </View>
     );

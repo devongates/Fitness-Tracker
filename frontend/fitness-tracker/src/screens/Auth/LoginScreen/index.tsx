@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -14,7 +14,7 @@ import { AppScreens, AuthStackParamList } from '../../../navigators/AuthFlowNavi
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ScrollView } from 'react-native-gesture-handler';
 import { State } from 'react-native-gesture-handler';
-
+import axios from 'axios';
 
 type LoginScreenNavigationProps = StackNavigationProp<AuthStackParamList, AppScreens.Login>;
 
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 2,
         borderColor: 'grey',
+        color: 'grey',
         marginTop: 10,
         padding: 18,
         width: '100%'
@@ -81,10 +82,9 @@ const styles = StyleSheet.create({
     signup: {
         marginTop: 200
     },
-    open:{
+    open: {
         marginTop: 200
-    },
-
+    }
 });
 
 const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
@@ -93,25 +93,51 @@ const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
     let auth = props.children;
     const [username, setUsername] = useState<string>('');
     const [pass, setpass] = useState<string>('');
+    const [users, setUsers] = useState([]);
+    const [isValidLogin, setIsValidLogin] = useState(false);
 
-    let logged = true;
+    useEffect(() => {
+        getUsers();
+    }, []);
+
+    const getUsers = () => {
+        axios
+            .get('http://localhost:5000/users')
+            .then((res) => {
+                setUsers(res.data);
+                console.log(res.data);
+            })
+            .catch((err) => console.log(err));
+    };
+
+    const login = () => {
+        users.forEach((user) => {
+            if (user.username === username && user.password === pass) {
+                setIsValidLogin(true);
+            }
+        });
+        if (isValidLogin) {
+            navigation.navigate(AppScreens.home, { username });
+        } else {
+            alert('Invalid login');
+        }
+    };
+
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
                 <View style={styles.open}></View>
                 <View style={styles.textInputContainer}>
                     <TextInput
-                        color= 'grey'
                         value={username}
                         placeholder="username"
-                        placeholderTextColor = "grey"
+                        placeholderTextColor="grey"
                         style={styles.textInput}
                         onChangeText={(text) => setUsername(text)}
                     />
                     <TextInput
-                        color= 'grey'
                         placeholder="password"
-                        placeholderTextColor = 'grey'
+                        placeholderTextColor="grey"
                         secureTextEntry={true}
                         style={styles.textInput}
                         value={pass}
@@ -120,27 +146,15 @@ const LoginScreen: React.FunctionComponent<LoginScreenProps> = (props) => {
 
                     <View>
                         <View style={styles.textInputContainer}>
-                            <TouchableOpacity
-                                style={styles.button}
-                                onPress={() => {
-                                    if (username.length < 3) {
-                                        alert('username must be atleast 3 characters');
-                                    } else if (pass.length < 6) {
-                                        alert('password must be atleast 6 characters');
-                                    } else {
-                                        alert('welcome!');
-                                        navigation.navigate(AppScreens.home, { username });
-                                    }
-                                }}
-                            >
+                            <TouchableOpacity style={styles.button} onPress={login}>
                                 <Text>Login</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
                 <View style={styles.signup}>
-                    <Text style={styles.txtHello}>don't have an account?</Text>
-                    <Button title="Signup" onPress={() => navigation.navigate(AppScreens.Signup, { username })} />
+                    <Text style={styles.txtHello}>Don't have an account?</Text>
+                    <Button title="Sign Up" onPress={() => navigation.navigate(AppScreens.Signup, { username })} />
                 </View>
             </SafeAreaView>
         </ScrollView>
