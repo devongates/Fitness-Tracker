@@ -17,7 +17,7 @@ import axios from 'axios';
 const running = (props) => {
     const { route, navigation } = props;
     const [start, setStart] = useState(false);
-    const { workout } = route.params;
+    const { workout, username } = route.params;
     const time = useRef(null);
 
     const handlePress = () => {
@@ -26,11 +26,15 @@ const running = (props) => {
 
     const handleSubmit = () => {
         const newWorkout = {
-            workout: workout,
+            username: username,
+            description: workout,
             duration: time.current,
             date: new Date()
         };
-        console.log(newWorkout);
+        axios
+            .post('http://localhost:5000/exercises/add', newWorkout)
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err));
     };
     return (
         <View style={styles.container}>

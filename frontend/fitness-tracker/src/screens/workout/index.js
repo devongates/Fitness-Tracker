@@ -19,10 +19,6 @@ const workout = (props) => {
     const workouts = ['Running', 'Benches', 'Squats', 'Push Ups'];
     const [other, setOther] = useState('');
 
-    useEffect(() => {
-        alert(username);
-    }, []);
-
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
@@ -32,7 +28,7 @@ const workout = (props) => {
                             style={styles.button}
                             key={index}
                             onPress={() => {
-                                navigation.navigate(AppScreens.timer, { workout });
+                                navigation.navigate(AppScreens.timer, { workout, username });
                             }}
                         >
                             <Text>{workout}</Text>

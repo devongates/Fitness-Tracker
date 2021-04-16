@@ -27,7 +27,7 @@ const homescreen = (props) => {
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate(AppScreens.workout);
+                            navigation.navigate(AppScreens.workout, { username });
                         }}
                     >
                         <Text>Workout</Text>
