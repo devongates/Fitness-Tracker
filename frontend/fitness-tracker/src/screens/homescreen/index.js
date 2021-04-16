@@ -17,8 +17,6 @@ const homescreen = (props) => {
     const { navigation, route } = props;
     const { username } = route.params;
 
-    console.log(username);
-
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>

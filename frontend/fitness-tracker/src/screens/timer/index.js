@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -18,7 +18,7 @@ const running = (props) => {
     const { route, navigation } = props;
     const [start, setStart] = useState(false);
     const { workout, username } = route.params;
-    const time = useRef(null);
+    const time = useRef('00:00:00:00');
 
     const handlePress = () => {
         setStart(!start);
@@ -31,10 +31,12 @@ const running = (props) => {
             duration: time.current,
             date: new Date()
         };
+        console.log(newWorkout);
         axios
             .post('http://localhost:5000/exercises/add', newWorkout)
             .then((res) => console.log(res.data))
             .catch((err) => console.log(err));
+        navigation.navigate(AppScreens.home, { username });
     };
     return (
         <View style={styles.container}>

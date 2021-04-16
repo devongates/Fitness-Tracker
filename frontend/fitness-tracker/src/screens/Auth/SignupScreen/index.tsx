@@ -51,7 +51,7 @@ const SignupScreen: React.FunctionComponent<SignupScreenProps> = (props) => {
                 .post('http://localhost:5000/users/add', newUser)
                 .then((res) => console.log(res.data))
                 .catch((err) => console.log(err));
-            navigation.navigate(AppScreens.home);
+            navigation.navigate(AppScreens.home, { username });
         }
     };
 

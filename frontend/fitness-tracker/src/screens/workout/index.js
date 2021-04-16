@@ -47,7 +47,7 @@ const workout = (props) => {
                     <TouchableOpacity
                         style={styles.button3}
                         onPress={() => {
-                            navigation.navigate(AppScreens.timer, { workout: other });
+                            navigation.navigate(AppScreens.timer, { workout: other, username });
                         }}
                     >
                         <Text>Go</Text>
