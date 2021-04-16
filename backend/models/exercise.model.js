@@ -13,7 +13,7 @@ const exerciseSchema = new Schema(
 			required: true,
 		},
 		duration: {
-			type: Number,
+			type: String,
 			required: true,
 		},
 		date: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -11,18 +11,18 @@ import {
     Dimensions
 } from 'react-native';
 import { AppScreens, AuthStackParamLists } from '../../navigators/AuthFlowNavigator';
-
 import { ScrollView } from 'react-native-gesture-handler';
 
 const homescreen = (props) => {
     const { navigation, route } = props;
-    const username = props.params;
+    const { username } = route.params;
+
+    console.log(username);
 
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
                 <View style={styles.textInputContainer}>
-                    
                     <View style={styles.sep}></View>
                     <TouchableOpacity
                         style={styles.button}
@@ -38,7 +38,7 @@ const homescreen = (props) => {
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate(AppScreens.progress);
+                            navigation.navigate(AppScreens.progress, { username });
                         }}
                     >
                         <Text>Progress</Text>

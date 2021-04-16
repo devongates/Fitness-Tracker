@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -12,27 +12,38 @@ import {
 } from 'react-native';
 import { AppScreens, AuthStackParamLists } from '../../navigators/AuthFlowNavigator';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
+import axios from 'axios';
 
 const running = (props) => {
     const { route, navigation } = props;
-    let [b, setb] = useState(0);
     const [start, setStart] = useState(false);
     const { workout } = route.params;
+    const time = useRef(null);
 
     const handlePress = () => {
         setStart(!start);
+    };
+
+    const handleSubmit = () => {
+        const newWorkout = {
+            workout: workout,
+            duration: time.current,
+            date: new Date()
+        };
+        console.log(newWorkout);
     };
     return (
         <View style={styles.container}>
             <View style={styles.textInputContainer}>
                 <Text style={styles.txtHello}>{workout.toUpperCase()}</Text>
-
                 <View style={styles.container1}>
-                    <Stopwatch laps msecs start={start} reset={false} />
+                    <Stopwatch msecs start={start} reset={false} getTime={(curTime) => (time.current = curTime)} />
                 </View>
-
                 <TouchableOpacity style={styles.button} onPress={handlePress}>
                     <Text>{start ? 'Stop' : 'Start'}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button2} onPress={handleSubmit}>
+                    <Text>Done</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -104,8 +115,8 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         height: 50,
         justifyContent: 'center',
-        marginTop: 200,
-        backgroundColor: '#b60f00'
+        marginTop: 60,
+        backgroundColor: '#6B2426'
     },
     image: {
         marginBottom: 0,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -14,53 +14,53 @@ import { AppScreens, AuthStackParamLists } from '../../navigators/AuthFlowNaviga
 import { ScrollView } from 'react-native-gesture-handler';
 
 const workout = (props) => {
-    const { navigation } = props;
+    const { navigation, route } = props;
+    const { username } = route.params;
     const workouts = ['Running', 'Benches', 'Squats', 'Push Ups'];
     const [other, setOther] = useState('');
 
+    useEffect(() => {
+        alert(username);
+    }, []);
+
     return (
         <ScrollView>
-        <SafeAreaView style={styles.container}>
-            
-            
-            {workouts.map((workout, index) => {
-                return (
-                    <TouchableOpacity
-                        style={styles.button}
-                        key={index}
-                        onPress={() => {
-                            navigation.navigate(AppScreens.timer, { workout });
-                        }}
-                    >
-                        <Text>{workout}</Text>
-                
-                    </TouchableOpacity>
-                );
-            })}
-            
-            <View style={styles.container1}>
-                <TextInput
-                    placeholder="Other"
-                    placeholderTextColor='grey'
-                    
-                    value={other}
-                    style={styles.textInput}
-                    onChangeText={(text) => setOther(text)}
-                />
+            <SafeAreaView style={styles.container}>
+                {workouts.map((workout, index) => {
+                    return (
+                        <TouchableOpacity
+                            style={styles.button}
+                            key={index}
+                            onPress={() => {
+                                navigation.navigate(AppScreens.timer, { workout });
+                            }}
+                        >
+                            <Text>{workout}</Text>
+                        </TouchableOpacity>
+                    );
+                })}
+
+                <View style={styles.container1}>
+                    <TextInput
+                        placeholder="Other"
+                        placeholderTextColor="grey"
+                        value={other}
+                        style={styles.textInput}
+                        onChangeText={(text) => setOther(text)}
+                    />
                     <TouchableOpacity
                         style={styles.button3}
                         onPress={() => {
-                            navigation.navigate(AppScreens.timer, { workout: other }); 
+                            navigation.navigate(AppScreens.timer, { workout: other });
                         }}
                     >
                         <Text>Go</Text>
-                </TouchableOpacity>
+                    </TouchableOpacity>
                 </View>
-            
-        </SafeAreaView>
-    </ScrollView>
-    )};
-
+            </SafeAreaView>
+        </ScrollView>
+    );
+};
 
 const styles = StyleSheet.create({
     btn: {
@@ -88,8 +88,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 10,
-        
+        margin: 10
     },
     textInput: {
         borderRadius: 10,
