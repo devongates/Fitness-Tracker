@@ -73,9 +73,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 10,
+        // margin: 10,
+        marginTop: 30,
         width: '60%',
-        color: 'white'
+        color: '#111'
     },
     btnSignupContainer: {
         alignItems: 'center'
@@ -84,7 +85,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 10
+        margin: 10,
+        marginTop: 100
     },
     textInput: {
         borderRadius: 10,
@@ -93,8 +95,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         padding: 18,
         width: '100%',
-        color: 'white',
-        borderColor: 'white'
+        color: '#999',
+        borderColor: '#999'
     },
     textInputContainer: {
         width: Dimensions.get('window').width,

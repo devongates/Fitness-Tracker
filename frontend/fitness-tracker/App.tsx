@@ -17,6 +17,7 @@ import { DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 export default function App() {
+    console.disableYellowBox = true;
     const [Auth, setAuth] = useState(false);
     const scheme = useColorScheme();
     if (Auth === false) {

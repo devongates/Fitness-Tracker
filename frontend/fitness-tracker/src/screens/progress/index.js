@@ -36,7 +36,17 @@ const progress = (props) => {
         <ScrollView>
             <SafeAreaView style={styles.container}>
                 <View style={styles.textInputContainer}>
-                    <Text style={styles.txtHello}>Progress</Text>
+                    <View style={{ flex: 1, alignSelf: 'stretch', flexDirection: 'row' }}>
+                        <View style={{ flex: 1, alignSelf: 'stretch' }}>
+                            <Text style={styles.txtHello}>Exercise</Text>
+                        </View>
+                        <View style={{ flex: 1, alignSelf: 'stretch' }}>
+                            <Text style={styles.txtHello}>Time</Text>
+                        </View>
+                        <View style={{ flex: 1, alignSelf: 'stretch' }}>
+                            <Text style={styles.txtHello}>Date</Text>
+                        </View>
+                    </View>
                     <View style={styles.sep}></View>
                     {workouts.map((workout) => {
                         const { _id, description, duration, date } = workout;
@@ -92,7 +102,8 @@ const styles = StyleSheet.create({
         fontSize: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        color: 'grey'
+        color: 'grey',
+        textAlign: 'center'
     },
     box: {
         width: Dimensions.get('window').width,

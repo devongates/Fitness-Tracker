@@ -20,6 +20,7 @@ const homescreen = (props) => {
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
+                <Text style={styles.txtHello}>{`Hello, ${username}.`}</Text>
                 <View style={styles.textInputContainer}>
                     <View style={styles.sep}></View>
                     <TouchableOpacity
@@ -68,7 +69,9 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-between',
-        margin: 10
+        // alignContent: 'center',
+        margin: 10,
+        marginTop: 120
     },
     textInput: {
         borderRadius: 10,
@@ -83,11 +86,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     txtHello: {
-        marginTop: 150,
+        marginBottom: 30,
         fontSize: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        color: '#b60f00'
+        color: '#aaa'
     },
     box: {
         width: Dimensions.get('window').width,
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         height: 50,
         justifyContent: 'center',
-        marginTop: 40,
+        margin: 40,
         backgroundColor: '#6B2426'
     },
     image: {
@@ -115,7 +118,7 @@ const styles = StyleSheet.create({
         marginTop: 100
     },
     sep: {
-        marginTop: 20,
+        margin: 10,
         borderBottomColor: 'grey',
         borderBottomWidth: 1,
         width: '80%'
