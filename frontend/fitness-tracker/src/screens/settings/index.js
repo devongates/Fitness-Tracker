@@ -17,13 +17,14 @@ const styles = StyleSheet.create({
         margin: 10
     },
     textInput: {
-        borderRadius: 10,
-        borderWidth: 2,
-        borderColor: 'black',
-        marginTop: 10,
-        padding: 18,
-        width: '100%'
-    },
+      borderRadius: 10,
+      borderWidth: 2,
+      borderColor: 'grey',
+      color: 'grey',
+      marginTop: 10,
+      padding: 18,
+      width: '100%'
+  },
     textInputContainer: {
         width: Dimensions.get('window').width,
         alignItems: 'center',
@@ -82,6 +83,9 @@ const styles = StyleSheet.create({
 
 const settings = (props) => {
     const { navigation } = props;
+    const [opass, setopass] = useState('');
+    const [cpass, setcpass] = useState('');
+    const [pass, setpass] = useState('');
 
     return (
         <ScrollView>
@@ -93,25 +97,51 @@ const settings = (props) => {
                 
                 <Text style={styles.txtHello}></Text>
 
+                <TextInput
+                        value={opass}
+                        placeholder="current password"
+                        placeholderTextColor="grey"
+                        secureTextEntry={true}
+                        style={styles.textInput}
+                        onChangeText={(op) => setopass(op)}
+                    />
+                <TextInput
+                        value={pass}
+                        placeholder="new password"
+                        placeholderTextColor="grey"
+                        secureTextEntry={true}
+                        style={styles.textInput}
+                        onChangeText={(text) => setpass(text)}
+                    />
+                    <TextInput
+                        placeholder="comfirm password"
+                        placeholderTextColor="grey"
+                        secureTextEntry={true}
+                        style={styles.textInput}
+                        value={cpass}
+                        onChangeText={(leter) => setcpass(leter)}
+                    />
+
+
              <TouchableOpacity style={styles.button}
               onPress={() =>{
-                navigation.navigate(AppScreens.settings)
+                if(pass === cpass){
+                  alert('Password Successfully changed');
+                  navigation.navigate(AppScreens.home);
+                }
+                else{
+                  alert('passwords do not match');
+                  setpass('');
+                  setcpass('');
+                  setopass('')
+                }
               }}
              >
               <Text>change password</Text>
                </TouchableOpacity>
 
-              <View style={styles.sep}> 
-                 </View>
+              
                 
-                 <TouchableOpacity style={styles.button}
-              onPress={() =>{
-                navigation.navigate(AppScreens.settings)
-              }}
-             >
-              <Text>edit workout</Text>
-               </TouchableOpacity>
-            
                
              </View>
              <View style={styles.signup}>

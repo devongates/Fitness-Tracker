@@ -45,7 +45,7 @@ const WelcomeScreen: React.FunctionComponent<WelcomeScreenProps> = (props) => {
 
     return (
         <SafeAreaView style={styles.container}>
-             <Image style={styles.image} source={require("'../../../images/welcome.jpg")}/>
+             <Image style={styles.image} source={require("../../images/welcome.jpg")}/>
 
             <View style={styles.welcomeContainer}>
                 <Text style={styles.welcome}>Welcome</Text>
